@@ -9,7 +9,7 @@ const Register = () => {
   const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{6,20}$/;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const [username, setName] = useState("");
   const navigate = useNavigate();
 
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -43,6 +43,7 @@ const Register = () => {
       const res = await axios.post(
         "https://blog-server-swart.vercel.app/auth/signup",
         {
+          username,
           email,
           password,
         }
@@ -54,6 +55,7 @@ const Register = () => {
         console.log(data);
         navigate("/login");
         toast.dismiss("load");
+        toast.success("Now login with your credentials");
       },
       onMutate() {
         toast.loading("Logging in...", { id: "load" });
@@ -82,10 +84,10 @@ const Register = () => {
         <input
           type="text"
           className={`p-2 rounded-md text-black focus:outline-none ${
-            name.length < 0 && "border-2 border-red-400"
+            username.length < 0 && "border-2 border-red-400"
           }`}
           placeholder="Name"
-          value={name}
+          value={username}
           onChange={handleNameChange}
         />
 
