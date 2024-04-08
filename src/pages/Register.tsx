@@ -41,7 +41,7 @@ const Register = () => {
   const { mutate } = useMutation(
     async () => {
       const res = await axios.post(
-        "https://blog-server-swart.vercel.app/signin",
+        "https://blog-server-swart.vercel.app/auth/signup",
         {
           email,
           password,
