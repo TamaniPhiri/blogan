@@ -2,14 +2,15 @@ import { useState } from "react";
 import { IPost } from "../interface/types";
 import PostDetailComponent from "./PostDetailComponent";
 import axios from "axios";
+import { useQuery } from "react-query";
 
 const PostListComponent = () => {
   const [posts, setPosts] = useState<IPost[]>([]);
 
-  const {} = useQuery(
+  const { isLoading, isError } = useQuery(
     "getPosts",
     async () => {
-      const res = await axios.get("/");
+      const res = await axios.get("https://blog-server-swart.vercel.app/");
       return res.data;
     },
     {
