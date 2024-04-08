@@ -33,7 +33,7 @@ const Login = () => {
     mutate();
   };
 
-  const { mutate, isLoading, isError } = useMutation(
+  const { mutate } = useMutation(
     async () => {
       const res = await axios.post(
         "https://blog-server-swart.vercel.app/signin",
@@ -42,10 +42,19 @@ const Login = () => {
           password,
         }
       );
+      return res.data;
     },
     {
       onSuccess(data) {
         console.log(data);
+        toast.dismiss("load");
+      },
+      onMutate() {
+        toast.loading("Logging in...", { id: "load" });
+      },
+      onError() {
+        toast.error("Something went wrong, please try again");
+        toast.dismiss("load");
       },
     }
   );
