@@ -62,7 +62,7 @@ const Login = () => {
   return (
     <section className="min-h-screen w-full items-center justify-center flex">
       <div className="flex flex-col border border-gray-700 p-4 rounded-md gap-4 w-full max-w-sm">
-        <h1>Enter credentials</h1>
+        <h1 className=" text-center font-bold">Enter credentials</h1>
         <input
           type="email"
           className={`p-2 rounded-md text-black focus:outline-none ${
@@ -94,7 +94,10 @@ const Login = () => {
         <button onClick={login} className={`bg-purple-700 p-2 rounded-md`}>
           Login
         </button>
-        <Link to={"/register"}>Don't have an account? Sign up</Link>
+        <Link to={"/register"} className=" text-center">
+          Don't have an account?{" "}
+          <span className=" text-purple-300">Sign up</span>
+        </Link>
       </div>
     </section>
   );
