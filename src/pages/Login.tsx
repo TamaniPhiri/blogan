@@ -55,8 +55,8 @@ const Login = () => {
         toast.loading("Logging in...", { id: "load" });
       },
       onError() {
-        toast.error("Something went wrong, please try again");
         toast.dismiss("load");
+        toast.error("Something went wrong, please try again");
       },
     }
   );
