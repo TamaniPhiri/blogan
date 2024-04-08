@@ -29,7 +29,12 @@ const PostListComponent = () => {
   );
 
   return (
-    <section className=" min-h-screen w-full px-4 md:px-12 max-w-7xl flex">
+    <section className=" min-h-screen w-full px-4 md:px-12 max-w-7xl flex flex-col py-12">
+      <div className=" flex w-full items-end justify-end">
+        <button className=" bg-purple-600 p-2 rounded-md w-fit">
+          Create new post
+        </button>
+      </div>
       <PostDetailComponent c={posts} />
     </section>
   );
