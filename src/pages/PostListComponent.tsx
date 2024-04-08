@@ -6,25 +6,30 @@ import { useQuery } from "react-query";
 
 const PostListComponent = () => {
   const [posts, setPosts] = useState<IPost[]>([]);
-  const user = localStorage.getItem("user");
+  const token = localStorage.getItem("token");
 
-  console.log(JSON.stringify(user));
+  console.log(token);
 
   const { isLoading, isError } = useQuery(
     "getPosts",
     async () => {
-      const res = await axios.get("https://blog-server-swart.vercel.app/post");
+      const res = await axios.get("https://blog-server-swart.vercel.app/post", {
+        headers: {
+          "auth-token": token,
+        },
+      });
       return res.data;
     },
     {
       onSuccess(data) {
         console.log(data);
+        setPosts(data.posts);
       },
     }
   );
 
   return (
-    <section className=" min-h-screen w-full px-4 md:px-12">
+    <section className=" min-h-screen w-full px-4 md:px-12 max-w-7xl flex">
       <PostDetailComponent c={posts} />
     </section>
   );

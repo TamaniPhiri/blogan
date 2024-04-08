@@ -7,10 +7,10 @@ interface Props {
 
 const PostDetailComponent: FC<Props> = ({ c }) => {
   return (
-    <div>
-      <div className="">
+    <div className=" w-full flex flex-col">
+      <div className="grid w-full grid-cols-1 items-center justify-center">
         {c.map((item, i) => (
-          <div key={i}>
+          <div key={i} className=" border-b p-4 border-gray-500">
             <h1>{item.title}</h1>
             <p>{item.description}</p>
           </div>
