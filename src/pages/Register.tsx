@@ -24,7 +24,7 @@ const Register = () => {
     setPassword(event.target.value);
   };
 
-  const login = async () => {
+  const signup = async () => {
     if (!emailRegex.test(email)) {
       toast.error("Invalid email");
       return;
@@ -38,7 +38,7 @@ const Register = () => {
     mutate();
   };
 
-  const { mutate } = useMutation(
+  const { mutate, isLoading } = useMutation(
     async () => {
       const res = await axios.post(
         "https://blog-server-swart.vercel.app/auth/signup",
@@ -107,8 +107,16 @@ const Register = () => {
           )}
         </div>
 
-        <button onClick={login} className={`bg-purple-700 p-2 rounded-md`}>
-          Login
+        <button
+          disabled={isLoading}
+          onClick={signup}
+          className={`bg-purple-700 p-2 rounded-md justify-center items-center flex`}
+        >
+          {!isLoading ? (
+            <div className="w-6 h-6 border-4 border-white rounded-full border-t-purple-400 animate-spin"></div>
+          ) : (
+            "Sign up"
+          )}
         </button>
         <Link to={"/register"} className=" text-center">
           Don't have an account?{" "}
