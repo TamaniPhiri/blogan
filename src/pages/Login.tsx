@@ -47,6 +47,7 @@ const Login = () => {
     {
       onSuccess(data) {
         console.log(data);
+        navigate("/home");
         toast.dismiss("load");
       },
       onMutate() {
