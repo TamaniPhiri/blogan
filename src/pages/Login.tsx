@@ -2,7 +2,7 @@ import axios from "axios";
 import { ChangeEvent, useState } from "react";
 import toast from "react-hot-toast";
 import { useMutation } from "react-query";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -94,6 +94,7 @@ const Login = () => {
         <button onClick={login} className={`bg-purple-700 p-2 rounded-md`}>
           Login
         </button>
+        <Link to={"/register"}>Don't have an account? Sign up</Link>
       </div>
     </section>
   );
