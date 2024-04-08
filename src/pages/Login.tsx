@@ -1,11 +1,13 @@
 import { ChangeEvent, useState } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{6,20}$/;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -26,7 +28,7 @@ const Login = () => {
       return;
     }
 
-    console.log("Valid email and password. Logging in...");
+    navigate("/home");
   };
   return (
     <section className="min-h-screen w-full items-center justify-center flex">
