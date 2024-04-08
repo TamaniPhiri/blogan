@@ -36,7 +36,7 @@ const Login = () => {
   const { mutate } = useMutation(
     async () => {
       const res = await axios.post(
-        "https://blog-server-swart.vercel.app/signin",
+        "https://blog-server-swart.vercel.app/auth/signin",
         {
           email,
           password,
@@ -46,9 +46,10 @@ const Login = () => {
     },
     {
       onSuccess(data) {
-        console.log(data);
-        // navigate("/home");
+        localStorage.setItem("user", data);
+        navigate("/home");
         toast.dismiss("load");
+        toast.success("Login successful");
       },
       onMutate() {
         toast.loading("Logging in...", { id: "load" });
