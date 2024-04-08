@@ -1,5 +1,7 @@
+import axios from "axios";
 import { ChangeEvent, useState } from "react";
 import toast from "react-hot-toast";
+import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -28,8 +30,25 @@ const Login = () => {
       return;
     }
 
-    navigate("/home");
+    mutate();
   };
+
+  const { mutate, isLoading, isError } = useMutation(
+    async () => {
+      const res = await axios.post(
+        "https://blog-server-swart.vercel.app/signin",
+        {
+          email,
+          password,
+        }
+      );
+    },
+    {
+      onSuccess(data) {
+        console.log(data);
+      },
+    }
+  );
   return (
     <section className="min-h-screen w-full items-center justify-center flex">
       <div className="flex flex-col border border-gray-700 p-4 rounded-md gap-4 w-full max-w-sm">
