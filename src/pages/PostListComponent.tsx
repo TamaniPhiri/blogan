@@ -10,7 +10,7 @@ const PostListComponent = () => {
   const { isLoading, isError } = useQuery(
     "getPosts",
     async () => {
-      const res = await axios.get("https://blog-server-swart.vercel.app/");
+      const res = await axios.get("https://blog-server-swart.vercel.app/post");
       return res.data;
     },
     {
