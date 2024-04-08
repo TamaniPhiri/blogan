@@ -6,6 +6,9 @@ import { useQuery } from "react-query";
 
 const PostListComponent = () => {
   const [posts, setPosts] = useState<IPost[]>([]);
+  const user = localStorage.getItem("user");
+
+  console.log(JSON.stringify(user));
 
   const { isLoading, isError } = useQuery(
     "getPosts",

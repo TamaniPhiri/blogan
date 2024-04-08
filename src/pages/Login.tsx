@@ -46,7 +46,7 @@ const Login = () => {
     },
     {
       onSuccess(data) {
-        localStorage.setItem("user", data);
+        localStorage.setItem("user", JSON.stringify(data, null, 2));
         navigate("/home");
         toast.dismiss("load");
         toast.success("Login successful");
